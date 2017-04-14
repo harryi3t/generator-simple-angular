@@ -97,6 +97,10 @@ module.exports =  Generator.extend({
           author_info: this.props.author_info
         }
       );
+      this.fs.copy(
+        this.templatePath('_gulpfile.js'),
+        this.destinationPath('gulpfile.js')
+      );
     },
 
     install() {
