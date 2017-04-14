@@ -29,7 +29,6 @@ module.exports =  Generator.extend({
         name   : 'angularVersion',
         type   : 'input',
         message: 'Angular Version:',
-        store  : true,
         default: '1.6.0'
       }, {
         name   : 'author_name',
@@ -115,11 +114,14 @@ module.exports =  Generator.extend({
       this.log(yosay(
         'Congratulations! Your simple angular app is ready to use.'
       ));
-    },
-
-    startServer() {
-      this.on('dependenciesInstalled', function() {
-        this.spawnCommand('gulp', ['serve']);
+      this.prompt({
+        name   : 'launch',
+        type   : 'confirm',
+        message: 'Do you want to launch the app now?',
+        default: true
+      }).then((answer) => {
+        if (answer.launch)
+          this.spawnCommand('gulp', ['serve']);
       });
     }
   }
