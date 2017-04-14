@@ -19,7 +19,8 @@ describe('generator-simple-angular:app', () => {
       'app/app.js',
       'app/app.css',
       'package.json',
-      'gulpfile.js'
+      'gulpfile.js',
+      '.gitignore'
     ]);
   });
 
