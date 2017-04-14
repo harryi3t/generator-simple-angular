@@ -31,9 +31,31 @@ module.exports =  Generator.extend({
         message: 'Angular Version:',
         store  : true,
         default: '1.6.0'
+      }, {
+        name   : 'author_name',
+        type   : 'input',
+        message: 'Your Name:',
+        store  : true
+      }, {
+        name   : 'author_email',
+        type   : 'input',
+        message: 'Your email:',
+        store  : true
+      }, {
+        name   : 'author_url',
+        type   : 'input',
+        message: 'Your home page:',
+        store  : true
       }]).then((answers) => {
         this.props.angularVersion = answers.angularVersion;
         this.props.name = answers.name;
+        this.props.author_info = '';
+        if (answers.author_name)
+          this.props.author_info = `${answers.author_name} `;
+        if (answers.author_email)
+          this.props.author_info += `<${answers.author_email}> `;
+        if (answers.author_url)
+          this.props.author_info += `(${answers.author_url})`;
       });
     }
   },
@@ -56,18 +78,24 @@ module.exports =  Generator.extend({
 
     config() {
       this.fs.copyTpl(
-        this.templatePath('app.html'),
-        this.destinationPath('app.html'), {
+        this.templatePath('app/_index.html'),
+        this.destinationPath('app/index.html'), {
           angularVersion: this.props.angularVersion
         }
       );
       this.fs.copy(
-        this.templatePath('app.js'),
-        this.destinationPath('app.js')
+        this.templatePath('app/app.js'),
+        this.destinationPath('app/app.js')
       );
       this.fs.copy(
-        this.templatePath('app.css'),
-        this.destinationPath('app.css')
+        this.templatePath('app/app.css'),
+        this.destinationPath('app/app.css')
+      );
+      this.fs.copyTpl(
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json'), {
+          author_info: this.props.author_info
+        }
       );
     },
 
@@ -83,6 +111,12 @@ module.exports =  Generator.extend({
       this.log(yosay(
         'Congratulations! Your simple angular app is ready to use.'
       ));
+    },
+
+    startServer() {
+      this.on('dependenciesInstalled', function() {
+        this.spawnCommand('gulp', ['serve']);
+      });
     }
   }
 });

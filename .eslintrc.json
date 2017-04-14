@@ -8,6 +8,7 @@
     "consistent-return": 0,
     "func-names": 0,
     "guard-for-in": 0,
+    "curly": ["error", "multi", "consistent"],
     "import/newline-after-import": 0,
     "import/no-extraneous-dependencies": 0,
     "key-spacing": 0,
