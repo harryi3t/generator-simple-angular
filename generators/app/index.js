@@ -105,8 +105,8 @@ module.exports =  Generator.extend({
         this.destinationPath('gulpfile.js')
       );
       this.fs.copy(
-        this.templatePath('.*'),
-        this.destinationRoot()
+        this.templatePath('_.gitignore'),
+        this.destinationPath('.gitignore')
       );
     },
 
