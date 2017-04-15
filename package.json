@@ -1,6 +1,6 @@
 {
   "name": "generator-simple-angular",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "yeoman scaffolding for a simple express angular application",
   "repository": "harryi3t/generator-simple-angular",
   "homepage": "",
