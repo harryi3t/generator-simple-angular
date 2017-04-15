@@ -90,6 +90,10 @@ module.exports =  Generator.extend({
         this.templatePath('app/app.css'),
         this.destinationPath('app/app.css')
       );
+      this.fs.copy(
+        this.templatePath('app/favicon.ico'),
+        this.destinationPath('app/favicon.ico')
+      );
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'), {
