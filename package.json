@@ -1,6 +1,6 @@
 {
   "name": "generator-simple-angular",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "yeoman scaffolding for a simple express angular application",
   "repository": "harryi3t/generator-simple-angular",
   "homepage": "",
@@ -18,7 +18,10 @@
     "pretest": "eslint . --fix",
     "test": "jest"
   },
-  "pre-commit": ["pretest", "test"],
+  "pre-commit": [
+    "pretest",
+    "test"
+  ],
   "engines": {
     "node": ">=5.0"
   },
