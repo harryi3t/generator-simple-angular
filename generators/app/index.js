@@ -131,7 +131,7 @@ module.exports =  Generator.extend({
         default: true
       }).then((answer) => {
         if (answer.launch)
-          this.spawnCommand('gulp', ['serve']);
+          this.spawnCommand('npm', ['run', 'serve']);
       });
     }
   }
