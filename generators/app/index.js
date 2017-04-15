@@ -111,7 +111,9 @@ module.exports =  Generator.extend({
     },
 
     install() {
-      this.installDependencies();
+      this.installDependencies({
+        bower: false
+      });
     }
   },
 
